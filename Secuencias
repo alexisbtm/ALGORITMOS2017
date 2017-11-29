@@ -1,0 +1,238 @@
+#include "stdafx.h"
+
+#include <iostream>
+
+#include "conio.h"
+
+using namespace std;
+
+void secuencia20(int n)
+
+{
+
+int i=3,c=0;
+
+while (n>0)
+
+{
+
+c = c + i;
+
+cout << c<<"\t";
+
+n--;
+
+}
+
+}
+
+void secuencia21(int n)
+
+{
+
+int i=1,r,d,ne=0;
+
+while (n > 0)
+
+{
+
+r = powf(i, 2);
+
+i++;
+
+while (r > 0)
+
+{
+
+d = r % 10;
+
+ne = (ne * 10) + d;
+
+r = r / 10;
+
+}
+
+cout << ne << "\t";
+
+ne = 0;
+
+n--;
+
+}
+
+}
+
+void secuencia22(int n)
+
+{
+
+int r=0,i=1,d,ne=0;
+
+cout << i << "\t";
+
+while (n-1 > 0)
+
+{
+
+while (i > 0)
+
+{
+
+d = i % 10;
+
+ne = ne + d;
+
+i = i / 10;
+
+}
+
+r = r + ne;
+
+i = r;
+
+cout << r << "\t";
+
+ne = 0;
+
+n--;
+
+}
+
+}
+
+void secuencia23(int n)
+
+{
+
+int r = 0, i = 1, d, ne = 0;
+
+while (n > 0)
+
+{
+
+while (i > 0)
+
+{
+
+d = i % 10;
+
+ne = ne + d;
+
+i = i / 10;
+
+}
+
+cout << ne << "\t";
+
+r = r + ne;
+
+i = r;
+
+ne = 0;
+
+n--;
+
+}
+
+}
+
+void main()
+
+{
+
+int opcion, n;
+
+do
+
+{
+
+{
+
+cout << "\t\t MENU DE SECUENCIAS \n";
+
+cout << "1.Secuencia ejercicio 20:\n";
+
+cout << "2.Secuencia ejercicio 21:\n";
+
+cout << "3.Secuencia ejercicio 22:\n";
+
+cout << "4.Secuencia ejercicio 23:\n";
+
+cout << "0.Salir:\n";
+
+cout << "elegir opcion:";
+
+cin >> opcion;
+
+}
+
+system("cls");
+
+switch (opcion)
+
+{
+
+case 1:
+
+cout << "introducir el tamanho en la que correra la secuencia :";
+
+cin >> n;
+
+secuencia20(n);
+
+_getch();
+
+break;
+
+case 2:
+
+cout << "introducir el tamanho en la que correra la secuencia :";
+
+cin >> n;
+
+secuencia21(n);
+
+_getch();
+
+break;
+
+case 3:
+
+cout << "introducir el tamanho en la que correra la secuencia :";
+
+cin >> n;
+
+secuencia22(n);
+
+_getch();
+
+break;
+
+case 4:
+
+cout << "introducir el tamanho en la que correra la secuencia :";
+
+cin >> n;
+
+secuencia23(n);
+
+_getch();
+
+break;
+
+default:
+
+cout << "ERROR";
+
+break;
+
+}
+
+system("cls");
+
+}
+
+while (opcion != 0);
+
+}
+
