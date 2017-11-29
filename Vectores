@@ -1,0 +1,887 @@
+#include "math.h"
+
+#include "conio.h"
+
+#include <iostream>
+
+#include "stdlib.h"
+
+using namespace std;
+
+void CargarVec(int vec[], int n)
+
+{
+
+for (int i = 0; i < n; i++)
+
+{
+
+cout << "Introducir elemento ["<<i<<"] ";
+
+cin >> vec[i];
+
+}
+
+}
+
+void MostrarVec(int vec[], int n)
+
+{
+
+for (int i = 0; i < n; i++)
+
+{
+
+cout << endl << "vec["<<i<<"]: " << vec[i];
+
+}
+
+}
+
+int FrecuenciaElementoVec(int vec[], int n, int a)
+
+{
+
+int c=0;
+
+for (int i = 0; i < n; i++)
+
+{
+
+if (vec[i] == a)
+
+{
+
+c++;
+
+}
+
+}
+
+return (c);
+
+}
+
+void eliminar(int vec[], int &n, int x)
+
+{
+
+int i;
+
+for (i = 0; i < n ; i++)
+
+{
+
+if (vec[i]==x)
+
+vec[i] = vec[i + 1];
+
+}
+
+}
+
+int BusquedaElemento(int vec[], int n, int a)
+
+{
+
+int c;
+
+bool k = false;
+
+for (int i = 0; i < n; i++)
+
+{
+
+if (vec[i] == a)
+
+{
+
+c = i;
+
+k = true;
+
+}
+
+}
+
+if (k == false)
+
+{
+
+c = -1;
+
+}
+
+return(c);
+
+}
+
+void SumaCruzada(int vec[], int vec2[], int n)
+
+{
+
+int c;
+
+cout << "\n\n RESULTADO";
+
+for (int i = 0; i < n; i++)
+
+{
+
+c = vec[i] + vec2[n-i-1];
+
+cout << "\n " << c;
+
+}
+
+}
+
+int verificarAscenderVec(int vec[],int n)
+
+{
+
+bool k = false;
+
+for (int i = 0; i < (n-1); i++)
+
+{
+
+if (vec[i] >= vec[i+1])
+
+{
+
+k = true;
+
+}
+
+}
+
+return(k);
+
+}
+
+int insetarNumeroVec(int vec[], int n, int m)
+
+{
+
+int aux;
+
+for (int i = 0; i < n; i++)
+
+{
+
+if (vec[i] > m)
+
+{
+
+aux = vec[i];
+
+vec[i] = m;
+
+m = aux;
+
+}
+
+}
+
+vec[n] = aux;
+
+return(n+1);
+
+}
+
+void RecorrerVec_hacia_arriba(int vec[], int n)
+
+{
+
+int aux;
+
+aux = vec[0];
+
+for (int i = 0; i < n-1; i++)
+
+{
+
+vec[i] = vec[i+1];
+
+}
+
+vec[n-1] = aux;
+
+}
+
+void RecorrerVec_hacia_abajo(int vec[], int n)
+
+{
+
+int aux,i;
+
+aux = vec[n-1];
+
+for ( i = 0; i < n-1 ; i++)
+
+{
+
+vec[n-1-i] = vec[n-2-i];
+
+}
+
+vec[0] = aux;
+
+}
+
+int invertir(int n)
+
+{
+
+int a=0;
+
+while (n > 0)
+
+{
+
+a = a*10 + n%10;
+
+n = n/10;
+
+}
+
+return(a);
+
+}
+
+bool ExisteElemento(int vec[], int n, int elem)
+
+{
+
+int i;
+
+bool k = false;
+
+for (i = 0; i < n; i++)
+
+{
+
+if (vec[i] == elem)
+
+{
+
+k = true;
+
+}
+
+}
+
+return(k);
+
+}
+
+void UnionVec(int vec[], int n, int vec1[], int n1, int vec2[], int &n2)
+
+{
+
+int i;
+
+n2=0;
+
+for (i = 0; i < n; i++)
+
+{
+
+vec2[n2] = vec[i];
+
+n2++;
+
+}
+
+for (i = 0; i < n1; i++)
+
+{
+
+if (ExisteElemento(vec2, n2, vec1[i]) == false)
+
+{
+
+vec2[n2] = vec1[i];
+
+n2++;
+
+}
+
+}
+
+}
+
+int cantDigitos(int n)
+
+{
+
+int c=0;
+
+while (n>0)
+
+{
+
+n=n/10;
+
+c++;
+
+}
+
+return(c);
+
+}
+
+bool siesprimo(int n)
+
+{
+
+int i;
+
+bool k = true;
+
+for (i = 2; i < n; i++)
+
+{
+
+if (n%i == 0)
+
+{
+
+k = false;
+
+i = n;
+
+}
+
+}
+
+return(k);
+
+}
+
+int primo(int n)
+
+{
+
+int c = 0, cp = 0;
+
+while (cp < n)
+
+{
+
+c++;
+
+if (siesprimo(c) == true)
+
+{
+
+cp++;
+
+}
+
+}
+
+return (c);
+
+}
+
+int fibo(int n)
+
+{
+
+int a = 0, b = 1, c;
+
+c = b;
+
+while (n > 0)
+
+{
+
+c = a + b;
+
+a = b;
+
+b = c;
+
+n--;
+
+}
+
+return(c);
+
+}
+
+void secuencia_mitad_primos_mitad_fibo(int vec[], int n)
+
+{
+
+int i, a, p = 0, m = 1;
+
+a = n / 2;
+
+for (i = n - 1; i >= a; i--)
+
+{
+
+vec[i] = fibo(p);
+
+p++;
+
+}
+
+for (i = a - 1; i >= 0; i--)
+
+{
+
+vec[i] = primo(m);
+
+m++;
+
+}
+
+}
+
+void EliminaPar(int vec[], int n1, int vec1[])
+
+{
+
+int cantD, i, j, NumG=0, b, k=0;
+
+for (i = 0; i < n1; i++)
+
+{
+
+cantD = cantDigitos(vec[i]);
+
+for (j = 0; j < cantD; j++)
+
+{
+
+b = vec[i]%10;
+
+vec[i] = vec[i]/10;
+
+if (b%2 != 0)
+
+{
+
+NumG = NumG + b*powf(10,k);
+
+k++;
+
+}
+
+}
+
+vec1[i] = NumG;
+
+NumG = 0;
+
+k = 0;
+
+}
+
+}
+
+//Menu
+
+void main()
+
+{
+
+int x, x1, x2=0, x3, y, vec1[50], vec2[50], vec3[50], opcion,n;
+
+do
+
+{
+
+{
+
+cout << endl << endl << " M E N U VECTORES \n";
+
+cout << endl << " 1.- Frecuencia de un numero";
+
+cout << endl << " 2.- Insertar Digito";
+
+cout << endl << " 3.- Eliminar digito";
+
+cout << endl << " 4.- Busqueda de un elemento";
+
+cout << endl << " 5.- Suma Cruzada";
+
+cout << endl << " 6.- Recorrer Vector hacia arriba";
+
+cout << endl << " 7.- Recorrer Vector hacia abajo";
+
+cout << endl << " 8.- Union de vectores";
+
+cout << endl << " 9.- Mitad primos Mitad fibonacci";
+
+cout << endl << " 10.- Eliminar Digitos Pares";
+
+cout << endl << " 0.- Salir";
+
+cout << endl << "\nelegir opcion : ";
+
+cin >> opcion;
+
+}
+
+system("cls");
+
+switch (opcion)
+
+{
+
+case 1 : do
+
+{
+
+cout << "Introducir el tamanho del arreglo: ";
+
+cin >> x;
+
+if (x <= 0)
+
+{
+
+cout << "\nERROR, introdujo un numero que no es natural.\n\n";
+
+}
+
+} while (x <= 0);
+
+CargarVec(vec1, x);
+
+cout << "Introducir el numerero que desee saber su frecuencia: ";
+
+cin >> y;
+
+cout << "El numero " << y << " se encuentra " << FrecuenciaElementoVec(vec1, x, y) << " veces.";
+
+_getch();
+
+break;
+
+case 2: do
+
+{
+
+cout << "Introducir el tamanho del arreglo: ";
+
+cin >> x;
+
+if (x <= 0)
+
+{
+
+cout << "\nERROR, introdujo un numero que no es natural.\n\n";
+
+}
+
+} while (x <= 0);
+
+do
+
+{
+
+cout << "Introducir los numero de forma ascendente\n";
+
+CargarVec(vec1, x);
+
+if (verificarAscenderVec(vec1, x) == 1)
+
+{
+
+cout << "ERROR, sus numeros no estan colocados de forma ascendente o se repiten\n";
+
+}
+
+} while (verificarAscenderVec(vec1, x) == 1);
+
+do
+
+{
+
+cout << "Introducir el numero que desea insertar: ";
+
+cin >> y;
+
+if (y <= 0)
+
+{
+
+cout << "\nERROR, introdujo un numero que no es natural.\n\n";
+
+}
+
+} while (y <= 0);
+
+MostrarVec(vec1, (insetarNumeroVec(vec1, x, y)));
+
+_getch();
+
+break;
+
+case 3:
+
+cout << "introducir el tamanho del arreglo:";
+
+cin >> n;
+
+CargarVec(vec1, n);
+
+cout << "introducir el digito que desea eliminar:";
+
+cin >> x;
+
+eliminar(vec1, n, x);
+
+MostrarVec(vec1, n);
+
+_getch();
+
+break;
+
+case 4 : do
+
+{
+
+cout << "Introducir el tamanho del arreglo: ";
+
+cin >> x;
+
+if (x <= 0)
+
+{
+
+cout << "\nERROR, introdujo un numero que no es natural.\n\n";
+
+}
+
+} while (x <= 0);
+
+CargarVec(vec1, x);
+
+cout << "Introducir el numerero que desee conocer su posicion: ";
+
+cin >> y;
+
+if (BusquedaElemento(vec1, x, y) == -1)
+
+{
+
+cout << "\nSu elemento se encuentra en la posicion -1,\nlo que significa que no se encotro el elemento.";
+
+}
+
+else
+
+{
+
+cout << "El elemento " << y << " se encuentra en la posicion " << BusquedaElemento(vec1, x, y);
+
+}
+
+_getch();
+
+break;
+
+case 5 : do
+
+{
+
+cout << "Introducir el tamanho del arreglo: ";
+
+cin >> x;
+
+if (x <= 0)
+
+{
+
+cout << "\nERROR, introdujo un numero que no es natural.\n\n";
+
+}
+
+} while (x <= 0);
+
+CargarVec(vec1, x);
+
+cout << "\nIntroducir elementos a otro vector del mismo tamanho\n";
+
+CargarVec(vec2, x);
+
+cout << "\nVector1\n";
+
+MostrarVec(vec1, x);
+
+cout << "\n\nVector2\n";
+
+MostrarVec(vec2, x);
+
+SumaCruzada(vec1, vec2, x);
+
+_getch();
+
+break;
+
+case 6: do
+
+{
+
+cout << "Introducir el tamanho del arreglo: ";
+
+cin >> x;
+
+if (x <= 0)
+
+{
+
+cout << "\nERROR, introdujo un numero que no es natural.\n\n";
+
+}
+
+} while (x <= 0);
+
+CargarVec(vec1, x);
+
+cout << "\nEl vector recorrido es el siguiente.\n";
+
+RecorrerVec_hacia_arriba(vec1, x);
+
+MostrarVec(vec1, x);
+
+_getch();
+
+break;
+
+case 7 : do
+
+{
+
+cout << "Introducir el tamanho del arreglo: ";
+
+cin >> x;
+
+if (x <= 0)
+
+{
+
+cout << "\nERROR, introdujo un numero que no es natural.\n\n";
+
+}
+
+} while (x <= 0);
+
+CargarVec(vec1, x);
+
+cout << "\nEl vector recorrido es el siguiente.\n";
+
+RecorrerVec_hacia_abajo(vec1, x);
+
+MostrarVec(vec1, x);
+
+_getch();
+
+break;
+
+case 8 : do
+
+{
+
+cout << "Introducir el tamanho del arreglo: ";
+
+cin >> x;
+
+if (x <= 0)
+
+{
+
+cout << "\nERROR, introdujo un numero que no es natural.\n\n";
+
+}
+
+} while (x <= 0);
+
+CargarVec(vec1, x);
+
+do
+
+{
+
+cout << "Introducir el tamanho del arreglo: ";
+
+cin >> x1;
+
+if (x1 <= 0)
+
+{
+
+cout << "\nERROR, introdujo un numero que no es natural.\n\n";
+
+}
+
+} while (x1 <= 0);
+
+CargarVec(vec2, x1);
+
+UnionVec(vec1, x, vec2, x1, vec3, x2);
+
+MostrarVec(vec3, x2);
+
+_getch();
+
+break;
+
+case 9:
+
+cout << "introducir el tamanho del vector que sea par:";
+
+cin >> n;
+
+secuencia_mitad_primos_mitad_fibo(vec1, n);
+
+MostrarVec(vec1, n);
+
+_getch();
+
+break;
+
+case 10 : do
+
+{
+
+cout << "Introducir el tamanho del arreglo: ";
+
+cin >> x;
+
+if (x <= 0)
+
+{
+
+cout << "\nERROR, introdujo un numero que no es natural.\n\n";
+
+}
+
+} while (x <= 0);
+
+CargarVec(vec1, x);
+
+EliminaPar(vec1, x, vec2);
+
+MostrarVec(vec2, x);
+
+_getch();
+
+break;
+
+}
+
+system("cls");
+
+}
+
+while (opcion != 0);
+
+}
