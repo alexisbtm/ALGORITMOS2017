@@ -1,0 +1,565 @@
+#include "stdafx.h"
+#include <iostream>
+#include "conio.h"
+#include <string>
+#include "stdlib.h"
+
+using namespace std;
+
+struct t_carbono
+{
+ string carbonono_automovil;
+ string carbono_motocicleta;
+string carbono_avion;
+string carbono_micro;
+string carbono_bus;
+string carbono_bicicleta;
+};
+};
+struct t_transporte
+{
+ string horas_automovil;
+ string horas_ motocicleta;
+string horas_avion;
+string horas_micro;
+string horas_bus;
+string horas_bicicleta;
+};
+struct datos_personales
+{
+ string nombre;
+ string edad;
+string ciudad;
+};
+struct datos_personales
+{
+ string nombre;
+ string edad;
+string ciudad;
+};
+struct consumo_responsable
+{
+ string kgcarbono_año;
+ string nombre;
+};
+
+t_kgcarbono V[MAX];
+
+int insertar();
+void listar(int N);
+void alta_secuencial;
+bool consultar(int N,
+ int idElemento);
+void ALTA_SECUENCIAL 
+void CONSULTA_SECUENCIAL 
+void LISTADO_SECUENCIAL
+void MODIFICACION_SECUENCIAL 
+void BAJA_LOGICA_SECUENCIAL
+ void BAJA_FISICA_SECUENCIAL 
+void ALTA_DIRECTA
+ void CONSULTA_DIRECTA
+ void BAJA_LOGICA_DIRECTA
+ void MODIFICACION_DIRECTA
+ void BAJA_LOGICA_DIRECTA
+
+void main()
+{int N, opc, f, idElemento;
+do{ 
+  cout<<"\n MENU ";
+  cout<<"\n [1]---> Insertar";
+  cout<<"\n [2]---> Listar";
+  cout<<"\n [3]---> Consultar";
+  cout<<"\n [4]---> Modificar";
+  cout<<"\n [5]---> Borrar";
+  cout<<"\n [6]---> Clasificar los datos";
+  cout<<"\n [0]---> Salir";
+  cout<<"\n Ingrese la opcion: ";
+  cin>>opc;
+  switch(opc)
+  {    case 1:N=insertar();
+         break;
+    case 2:listar(N);
+         break;
+    case 3:{cout << "Ingrese el elemento a consultar: ";
+            cin >> idElemento;
+            f=consultar(N,idElemento);
+            break;}
+    case 4:modificar(N);
+         break;
+    case 5:borrar(N);
+         break;
+    case 6:clasificar(N);
+         break;
+    case 0:cout<<"salir";
+         break;
+    default:cout<<"error";
+         break;
+  }
+  getch();
+  system("cls");
+ }while(opc!=0);
+getch();
+}
+
+int insertar()
+{    int N, aux;
+    cout<<" Ingrese el numero de datos que desee insertar: ";
+    cin>>N;
+    for(int i=0;i<N;i++)
+    {    cout<<"Ingrese el ID: "<<endl;
+        cin>> aux;
+        if(consultar(N, aux)==true){
+        V[i].numero=aux;
+        cout<<"Ingrese el interes: "<<endl;
+        cin.ignore();
+        getline(cin,V[i].interes);
+        cout<<"Ingrese la descripcion: "<<endl;
+        getline(cin,V[i].descripcion);
+        V[i].estado=0;
+        }
+        else{
+        cout<<"El id no existe";
+
+        }
+    }
+    getch();
+    return N;
+}
+void ALTA_SECUENCIAL(void)
+{
+ int no_prod;  
+clrscr();
+ cout << "\n\rALTAS DE REGISTROS DE PRODUCTOS";
+ alias=fopen("PRODUCTO.SEC","rb+"); 
+ if(alias==NULL)
+ alias=fopen("PRODUCTO.SEC","wb"); 
+ cout << "\n\n\n\rNumero de producto: ";
+ cin >> no_prod;
+ fread(&Registro,sizeof(Registro),1,alias);
+ tamano=sizeof(Registro) del archivo "alias"
+ while(!feof(alias))  {
+ if(Registro.no_prod==no_prod)
+ {
+ cout << "\n\n\n\rRegistro duplicado !!!";
+ fclose(alias);
+ getch();
+ return;
+ }
+ fread(&Registro,sizeof(Registro),1,alias);
+ }
+ cout << "\n\rDescripcion: "; gets(Registro.descrip);
+ cout << "\n\rCantidad : "; cin >> Registro.cantidad;
+ cout << "\n\rPrecio : "; cin >> Registro.precio;
+ do
+ {
+ cout << "\n\rGarantia : "; Registro.garantia=toupper(getche());
+ }while(Registro.garantia!='S' && Registro.garantia!='N');
+ Registro.no_prod=no_prod;
+ fwrite(&Registro,sizeof(Registro),1,alias); // Grabar el Registro
+ fclose(alias); // Cierra el archivo
+ cout << "\n\n\n\rProducto registrado !!!";
+ cout << "\n\r<<< Oprima cualquier tecla para continuar >>>";
+ getch();
+ return;
+}
+
+
+void CONSULTA_SECUENCIAL(void)
+{
+ int no_prod;
+ clrscr();
+ cout << "\n\rCONSULTA DE REGISTROS DE PRODUCTOS";
+ alias=fopen("PRODUCTO.SEC","rb"); 
+PRODUCTO.SEC
+if(alias==NULL)
+ {
+ cout << "\n\n\n\rNo existe el archivo !!!";
+ cout << "\n\r<<< Oprima cualquier tecla para continuar >>>";
+ getch();
+ return;
+ }
+ cout << "\n\n\n\rNumero de producto: "; cin >> no_prod;
+ fread(&Registro,sizeof(Registro),1,alias); 
+ while(!feof(alias))
+ {
+ if(Registro.no_prod==no_prod)
+ {
+ cout << "\n\rNo Prod Descripcion CantidadPrecio Garantia";
+ cout << "\n\r------------------------------------------------------
+------------------";
+
+printf("\n\r%3d\t%30s\t%3d\t\t$%4.2f\t%c",Registro.no_prod,Registro.descr
+ip,
+Registro.cantidad,Registro.precio,Registro.garantia);
+ fclose(alias);
+ cout << "\n\r<<< Oprima cualquier tecla para continuar >>>";
+ getch();
+ return;
+ }
+ fread(&Registro,sizeof(Registro),1,alias);
+ }
+ cout << "\n\rNo se encuentra ese registro !!!";
+ fclose(alias);
+ cout << "\n\r<<< Oprima cualquier tecla para continuar >>>";
+ getch();
+ return;
+}
+void LISTADO_SECUENCIAL(void)
+{
+ clrscr();
+ cout << "\n\rLISTADO DE REGISTROS DE PRODUCTOS";
+ alias=fopen("PRODUCTO.SEC","rb"); 
+(alias==NULL)
+ {
+ cout << "\n\n\n\rNo existe el archivo !!!";
+ cout << "\n\r<<< Oprima cualquier tecla para continuar >>>";
+ getch();
+ return;
+ }
+ cout << "\n\rNo Prod Descripcion Cantidad
+Precio Garantia";
+ cout << "\n\r----------------------------------------------------------
+--------------";
+ fread(&Registro,sizeof(Registro),1,alias);
+ while(!feof(alias))
+ {
+printf("\n\r%3d\t%30s\t%3d\t\t$%4.2f\t%c",Registro.no_prod,Registro.descr
+ip,
+Registro.cantidad,Registro.precio,Registro.garantia);
+ fread(&Registro,sizeof(Registro),1,alias);
+ }
+ fclose(alias); // Cierra el archivo
+ cout << "\n\r----------------------------------------------------------
+--------------";
+ cout << "\n\rFin del listado !!!";
+ cout << "\n\r<<< Oprima cualquier tecla para continuar >>>";
+ getch();
+ return;
+}
+void MODIFICACION_SECUENCIAL
+void MODIFICACION_SECUENCIAL(void)
+{
+ int no_prod; 
+ clrscr();
+ cout << "\n\rMODIFICACION DE REGISTROS DE PRODUCTOS";
+ alias=fopen("PRODUCTO.SEC","rb+"); 
+ if(alias==NULL) // Valida la existencia del archivo
+ {
+ cout << "\n\n\n\rNo existe el archivo !!!";
+ cout << "\n\r<<< Oprima cualquier tecla para continuar >>>";
+ getch();
+ return;
+ }
+ cout << "\n\n\n\rNumero de producto: "; cin >> no_prod;
+ fread(&Registro,sizeof(Registro),1,alias);
+ while(!feof(alias)) // Ciclo mientras no se encuentre el final del
+archivo
+ {
+ if(Registro.no_prod==no_prod)
+ {
+ cout << "\n\rNo Prod Descripcion Cantidad
+Precio Garantia";
+ cout << "\n\r------------------------------------------------------
+------------------";
+
+printf("\n\r%3d\t%30s\t%3d\t\t$%4.2f\t%c",Registro.no_prod,Registro.descr
+ip,
+Registro.cantidad,Registro.precio,Registro.garantia);
+ cout << "\n\n\n\rAnote los nuevos datos ...";
+ cout << "\n\rDescripcion: "; gets(Registro.descrip);
+ cout << "\n\rCantidad : "; cin >> Registro.cantidad;
+ cout << "\n\rPrecio : "; cin >> Registro.precio;
+ do
+ {
+ cout << "\n\rGarantia : "; Registro.garantia=toupper(getche());
+ }while(Registro.garantia!='S' && Registro.garantia!='N');
+
+ fseek(alias,ftell(alias)-sizeof(Registro),SEEK_SET);
+ fwrite(&Registro,sizeof(Registro),1,alias); 
+ fclose(alias); // Cierra el archivo
+ cout << "\n\n\n\rRegistro modificado !!!";
+ cout << "\n\r<<< Oprima cualquier tecla para continuar >>>";
+ getch();
+ return;
+ }
+ fread(&Registro,sizeof(Registro),1,alias);
+ }
+ cout << "\n\rNo se encuentra ese registro !!!";
+ fclose(alias); 
+ cout << "\n\r<<< Oprima cualquier tecla para continuar >>>";
+ getch();
+ return;
+}
+
+void BAJA_LOGICA_SECUENCIAL(void)
+{
+ int no_prod; 
+ char op; 
+ clrscr();
+ cout << "\n\rBAJAS LOGICAS DE REGISTROS DE PRODUCTOS";
+ alias=fopen("PRODUCTO.SEC","rb+"); 
+ if(alias==NULL) 
+ {
+ cout << "\n\n\n\rNo existe el archivo !!!";
+ cout << "\n\r<<< Oprima cualquier tecla para continuar >>>";
+ getch();
+ return;
+ }
+ cout << "\n\n\n\rNumero de producto: "; cin >> no_prod;
+ fread(&Registro,sizeof(Registro),1,alias);
+ // Lee el "Registro", de tamano=sizeof(Registro) del archivo "alias"
+ while(!feof(alias)) // Ciclo mientras no se encuentre el final del
+archivo
+ {
+ if(Registro.no_prod==no_prod)
+ {
+ cout << "\n\rNo Prod Descripcion Cantidad
+Precio Garantia";
+ cout << "\n\r------------------------------------------------------
+------------------";
+
+printf("\n\r%3d\t%30s\t%3d\t\t$%4.2f\t%c",Registro.no_prod,Registro.descr
+ip,Registro.cantidad,Registro.precio,Registro.garantia);
+ Registro.no_prod=0;
+ strcpy(Registro.descrip,"");
+ Registro.cantidad=0;
+ Registro.precio=0.0;
+ Registro.garantia=' ';
+ do {
+ cout << "\n\n\rEsta seguro que desea borrarlo? [S/N] ---> ";
+ op=toupper(getche());
+ }while(op!='S' && op!='N');
+ if(op=='S') 
+}
+  fseek(alias,ftell(alias)-sizeof(Registro),SEEK_SET);
+ fwrite(&Registro,sizeof(Registro),1,alias); 
+ cout << "\n\n\n\rRegistro eliminado !!!";
+ }
+ fclose(alias); // Cierra el archivo
+ cout << "\n\r<<< Oprima cualquier tecla para continuar >>>";
+ getch();
+ return;
+ }
+ fread(&Registro,sizeof(Registro),1,alias);
+ }
+ cout << "\n\rNo se encuentra ese registro !!!";
+ fclose(alias); 
+ cout << "\n\r<<< Oprima cualquier tecla para continuar >>>";
+ getch();
+ return;
+}
+void BAJA_FISICA_SECUENCIAL(void)
+{
+FILE *temporal; 
+ clrscr();
+ cout << "\n\rBAJAS FISICAS DE REGISTROS DE PRODUCTOS";
+ alias=fopen("PRODUCTO.SEC","rb"); 
+ if(alias==NULL) 
+ {
+ cout << "\n\n\n\rNo existe el archivo !!!";
+ cout << "\n\r<<< Oprima cualquier tecla para continuar >>>";
+ getch();
+ return;
+ }
+ temporal=fopen("TEMPORAL.TMP","wb"); 
+ fread(&Registro,sizeof(Registro),1,alias);
+ while(!feof(alias)) // Ciclo mientras no se encuentre el final del
+archivo
+ {
+ if(Registro.no_prod!=0)
+ fwrite(&Registro,sizeof(Registro),1,temporal);
+ fread(&Registro,sizeof(Registro),1,alias);
+ }
+ fcloseall();
+ remove("PRODUCTO.SEC"); //Elimina el archivo original
+ rename("TEMPORAL.TMP","PRODUCTO.SEC");
+  cout << "\n\n\n\rArchivo compactado !!!";
+ cout << "\n\r<<< Oprima cualquier tecla para continuar >>>";
+ getch();
+ return;
+}
+void ALTA_DIRECTA(void)
+{
+ int no_prod; 
+ clrscr();
+ cout << "\n\rALTAS DE REGISTROS DE PRODUCTOS";
+ alias=fopen("PRODUCTO.DIR","rb+");  
+ if(alias==NULL)
+ alias=fopen("PRODUCTO.DIR","wb"); 
+ cout << "\n\n\n\rNumero de producto: "; cin >> no_prod;
+ dir_fisica=no_prod*sizeof(Registro); 
+ fseek(alias,dir_fisica,SEEK_SET);
+ fread(&Registro,sizeof(Registro),1,alias);
+ if(Registro.no_prod==no_prod)
+ {
+ cout << "\n\n\n\rRegistro duplicado !!!";
+ fclose(alias);
+ getch();
+ return;
+ }
+ cout << "\n\rDescripcion: "; gets(Registro.descrip);
+ cout << "\n\rCantidad : "; cin >> Registro.cantidad;
+ cout << "\n\rPrecio : "; cin >> Registro.precio;
+ do
+ {
+ cout << "\n\rGarantia : "; Registro.garantia=toupper(getche());
+ }while(Registro.garantia!='S' && Registro.garantia!='N');
+ Registro.no_prod=no_prod;
+ fseek(alias,dir_fisica,SEEK_SET); 
+ fwrite(&Registro,sizeof(Registro),1,alias); 
+ fclose(alias); // Cierra el archivo
+ cout << "\n\n\n\rProducto registrado !!!";
+ cout << "\n\r<<< Oprima cualquier tecla para continuar >>>";
+ getch(); 
+ return;
+}
+void CONSULTA_DIRECTA(void)
+{
+ int no_prod; 
+ clrscr();
+ cout << "\n\rCONSULTA DE REGISTROS DE PRODUCTOS";
+ alias=fopen("PRODUCTO.DIR","rb"); 
+ if(alias==NULL)
+ {
+ cout << "\n\n\n\rNo existe el archivo !!!";
+ cout << "\n\r<<< Oprima cualquier tecla para continuar >>>";
+ getch();
+ return;
+ }
+ cout << "\n\n\n\rNumero de producto: "; cin >> no_prod;
+ dir_fisica=no_prod*sizeof(Registro);
+ fseek(alias,dir_fisica,SEEK_SET);
+ fread(&Registro,sizeof(Registro),1,alias);
+ if(Registro.no_prod==no_prod)
+ {
+ cout << "\n\rNo Prod Descripcion Cantidad
+Precio Garantia";
+ cout << "\n\r--------------------------------------------------------
+----------------";
+
+printf("\n\r%3d\t%30s\t%3d\t\t$%4.2f\t%c",Registro.no_prod,Registro.descr
+ip,Registro.cantidad,Registro.precio,Registro.garantia);
+ }
+ else
+ {
+ cout << "\n\n\n\rNo existe ese registro !!!";
+ }
+ fclose(alias);
+ cout << "\n\n\n\n\r<<< Oprima cualquier tecla para continuar >>>";
+ getch();
+ return;
+}
+void MODIFICACION_DIRECTA(void)
+{
+ int no_prod; 
+ clrscr();
+ cout << "\n\rMODIFICACION DE REGISTROS DE PRODUCTOS";
+ alias=fopen("PRODUCTO.DIR","rb+"); 
+ if(alias==NULL) {
+ cout << "\n\n\n\rNo existe el archivo !!!";
+ cout << "\n\r<<< Oprima cualquier tecla para continuar >>>";
+ getch();
+ return;
+ }
+ cout << "\n\n\n\rNumero de producto: "; cin >> no_prod;
+ dir_fisica=no_prod*sizeof(Registro); 
+ fseek(alias,dir_fisica,SEEK_SET); 
+ fread(&Registro,sizeof(Registro),1,alias);
+  if(Registro.no_prod==no_prod)
+ {
+ cout << "\n\rNo Prod Descripcion Cantidad
+Precio Garantia";
+ cout << "\n\r------------------------------------------------------
+------------------";
+
+printf("\n\r%3d\t%30s\t%3d\t\t$%4.2f\t%c",Registro.no_prod,Registro.descr
+ip,Registro.cantidad,Registro.precio,Registro.garantia);
+ cout << "\n\n\n\rAnote los nuevos datos ...";
+ cout << "\n\rDescripcion: "; gets(Registro.descrip);
+ cout << "\n\rCantidad : "; cin >> Registro.cantidad;
+ cout << "\n\rPrecio : "; cin >> Registro.precio;
+ do
+ {
+ cout << "\n\rGarantia : "; Registro.garantia=toupper(getche());
+ }while(Registro.garantia!='S' && Registro.garantia!='N');
+ fseek(alias,dir_fisica,SEEK_SET); 
+ fwrite(&Registro,sizeof(Registro),1,alias); 
+ fclose(alias); // Cierra el archivo
+ cout << "\n\n\n\rRegistro modificado !!!";
+ cout << "\n\r<<< Oprima cualquier tecla para continuar >>>";
+ getch();
+ return;
+ }
+ else
+ {
+ cout << "\n\n\n\rNo se encuentra ese registro !!!";
+ }
+ fclose(alias); // Cierra el archivo
+ cout << "\n\n\n\n\r<<< Oprima cualquier tecla para continuar >>>";
+ getch();
+ return;
+}
+void BAJA_LOGICA_DIRECTA(void)
+{
+ int no_prod; 
+ char op;
+ clrscr();
+ cout << "\n\rBAJA LOGICA DE REGISTROS DE PRODUCTOS";
+ alias=fopen("PRODUCTO.DIR","rb+"); 
+ if(alias==NULL) // Valida la existencia del archivo
+ {
+ cout << "\n\n\n\rNo existe el archivo !!!";
+ cout << "\n\r<<< Oprima cualquier tecla para continuar >>>";
+ getch();
+ return;
+ }
+ cout << "\n\n\n\rNumero de producto: "; cin >> no_prod;
+ dir_fisica=no_prod*sizeof(Registro); 
+ fseek(alias,dir_fisica,SEEK_SET);
+ fread(&Registro,sizeof(Registro),1,alias);
+ if(Registro.no_prod==no_prod)
+ {
+ cout << "\n\rNo Prod Descripcion Cantidad
+Precio Garantia";
+ cout << "\n\r------------------------------------------------------
+------------------";
+
+printf("\n\r%3d\t%30s\t%3d\t\t$%4.2f\t%c\n\n\n\n\r",Registro.no_prod,Regi
+stro.descrip,Registro.cantidad,Registro.precio,Registro.garantia);
+ Registro.no_prod=0;
+ strcpy(Registro.descrip,"");
+ Registro.cantidad=0;
+ Registro.precio=0.0;
+ Registro.garantia=' ';
+
+ do
+ {
+ cout << "\n\rEsta seguro que desea eliminar este registro? [S/N] --
+-> ";
+ op=toupper(getche());
+ }while(op!='S' && op!='N');
+ if(op=='S')
+ {
+ fseek(alias,dir_fisica,SEEK_SET); 
+ fwrite(&Registro,sizeof(Registro),1,alias); 
+ cout << "\n\n\n\rRegistro eliminado logicamente !!!";
+ }
+ else
+ {
+ cout << "\n\n\n\rRegistro NO eliminado !!!";
+ }
+ fclose(alias); // Cierra el archivo
+ cout << "\n\r<<< Oprima cualquier tecla para continuar >>>";
+ getch();
+ return;
+ }
+ else
+ {
+ cout << "\n\n\n\rNo se encuentra ese registro !!!";
+ }
+ fclose(alias); // Cierra el archivo
+ cout << "\n\n\n\n\r<<< Oprima cualquier tecla para continuar >>>";
+ getch();
+ return;
+}
+
