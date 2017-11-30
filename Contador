@@ -1,0 +1,521 @@
+#include "iostream"
+
+#include "conio.h"
+
+#include "stdlib.h"
+
+using namespace std;
+
+int contador_digitos(int n)
+
+{
+
+int c=0;
+
+while(n>0)
+
+{
+
+n=n/10;
+
+c++;
+
+}
+
+return(c);
+
+}
+
+int sumar_digitos(int n)
+
+{
+
+int d,s=0;
+
+while(n>0);
+
+{
+
+d=n%10;
+
+s=s+d;
+
+n=n/10;
+
+}
+
+return(s);
+
+}
+
+int invertir_numero(int n)
+
+{
+
+int d,s=0;
+
+{
+
+while(n>0)
+
+{
+
+d=n%10;
+
+s=s*10+d;
+
+n=n/10;
+
+}
+
+}
+
+return(s);
+
+}
+
+bool verif_digito(int n1, int n2 )
+
+{
+
+int d;
+
+bool k=false;
+
+while(n1>0)
+
+{
+
+d=n1%10;
+
+if(d==n2)
+
+{
+
+k=true;
+
+}
+
+n1=n1/10;
+
+}
+
+return (k);
+
+}
+
+int eliminar_digitos_repetidos(int n)
+
+{
+
+int d,s=0,aux=n;
+
+while (n>0)
+
+{
+
+d=n%10;
+
+if(verif_digito(aux,d)==false)
+
+{
+
+s=s*10+d;
+
+}
+
+n=n/10;
+
+}
+
+return(invertir_numero(s));
+
+}
+
+int digito_mayor(int n)
+
+{
+
+int d,may;
+
+may=d%10;
+
+while (n>0)
+
+{
+
+d=n%10;
+
+n=n/10;
+
+if(d>may)
+
+{
+
+may=d;
+
+}
+
+}
+
+return(may);
+
+}
+
+int eliminar_digitos(int n)
+
+{
+
+int d,s=0,aux=n;
+
+while(n>0)
+
+{
+
+d=n%10;
+
+if(digito_mayor(aux)!=d)
+
+{
+
+s=s*10+d;
+
+}
+
+n=n/10;
+
+}
+
+return(invertir_numero(s));
+
+}
+
+int introducir_digito(int n, int dig)
+
+{
+
+int x,y,s=0;
+
+n=n*10+dig;
+
+while(n>0)
+
+{
+
+x=digito_mayor(n);
+
+y=eliminar_digitos(n);
+
+n=y;
+
+s=s*10+x;
+
+}
+
+return(invertir_numero(s));
+
+}
+
+bool numero_capicua(int n)
+
+{
+
+bool k=false;
+
+if(n==invertir_numero(n))
+
+{
+
+k=true;
+
+}
+
+return(k);
+
+}
+
+void adivinar_numero(int n)
+
+{
+
+int nro;
+
+system("cls");
+
+do{
+
+cout << " Que numero cree usted que debe ser?: ";
+
+cin >> nro;
+
+if(nro>n)
+
+{
+
+cout << " El numero es demasiado grande: ";
+
+cout << endl;
+
+}
+
+else
+
+{
+
+if(nro<n)
+
+{
+
+cout << " El numero es demasiado pequeño: ";
+
+cout << endl;
+
+}
+
+else
+
+{
+
+cout << " ADIVINASTE EL NUMERO FELICIDADES!!! ";
+
+cout << endl;
+
+}
+
+}
+
+}while(nro!=n);
+
+}
+
+/*
+
+int crapulo_numero(int n)
+
+{
+
+int s=0,d,c=1,x=0;
+
+do
+
+{
+
+while (n>0)
+
+{
+
+d=n%10;
+
+if(s<powf(10,c))
+
+{
+
+x=sumar_digitos(n);
+
+}
+
+if(x>d && x<10)
+
+{
+
+m=x;
+
+}
+
+n=n/10;
+
+}
+
+}while(c!=contador_digitos(n));
+
+return();
+
+}
+
+*/
+
+int main()
+
+{
+
+int nro,opcion,digito,newnro,x;
+
+do
+
+{ cout << endl;
+
+cout << " ************* MENU************ " << endl;
+
+cout << " 1.- Cantidad de digitos " << endl;
+
+cout << " 2.- Sumar digitos" << endl;
+
+cout << " 3.- Invertir numero" << endl;
+
+cout << " 4.- Verificar si existe digito" << endl;
+
+cout << " 5.- Eliminar digitos repetidos" << endl;
+
+cout << " 6.- Introducir digito en un numero" << endl;
+
+cout << " 7.- Verificar si el numero es capicua" << endl;
+
+cout << " 8.- Adivina el numero" << endl;
+
+cout << " 0.- SALIR " << endl;
+
+cout << " Introducir opcion: ";
+
+cin >> opcion;
+
+switch(opcion)
+
+{
+
+case 1:cout << " Introducir numero: ";
+
+cin >> nro;
+
+x=contador_digitos(nro);
+
+cout << " La cantidad de digitos es: " << x;
+
+cout << endl;
+
+break;
+
+case 2:cout << " Introducir numero: ";
+
+cin >> nro;
+
+x=sumar_digitos(nro);
+
+cout << " La suma de sus digitos es: " << x;
+
+cout << endl;
+
+break;
+
+case 3:cout << " Introducir numero: ";
+
+cin >> nro;
+
+x=invertir_numero(nro);
+
+cout << " El numero invertido es: " << x;
+
+cout << endl;
+
+break;
+
+case 4:cout << " Introducir numero: ";
+
+cin >> nro;
+
+cout << " Introducir digito: ";
+
+cin >> digito;
+
+if(verif_digito(nro,digito)==true)
+
+{
+
+cout << " El digito esta en el numero ";
+
+}
+
+else
+
+{
+
+cout << " El digito no esta en el numero ";
+
+}
+
+cout << endl;
+
+break;
+
+case 5:cout << " Introducir numero: ";
+
+cin >> nro;
+
+x=eliminar_digitos_repetidos(nro);
+
+cout << " El numero sin digitos repetidos es: " << x;
+
+cout << endl;
+
+break;
+
+case 6:cout << " Introducir numero: ";
+
+cin >> nro;
+
+cout << " Introducir digito: ";
+
+cin >> digito;
+
+x=introducir_digito(nro,digito);
+
+cout << " El numero sin digitos repetidos es: " << x;
+
+cout << endl;
+
+break;
+
+case 7:cout << " Introducir numero: ";
+
+cin >> nro;
+
+if(numero_capicua(nro)==true)
+
+{
+
+cout << " El numero si es capicua ";
+
+}
+
+else
+
+{
+
+cout << " El numero no es capicua ";
+
+}
+
+cout << endl;
+
+break;
+
+case 8:
+
+do{
+
+cout << " Introducir numero que se debe adivinar entre 1 y 100: ";
+
+cin >> newnro;
+
+}while(newnro>100);
+
+adivinar_numero(newnro);
+
+cout << endl;
+
+break;
+
+case 0: cout << " Salir ";
+
+break;
+
+default:cout << " ERROR " << endl;
+
+break;
+
+}
+
+}while(opcion!=0);
+
+getch();
+
+}
